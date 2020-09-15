@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>10-intro</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reset.css">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style>
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section><section id="rustwasm-and-yew-and-you-too" class="title-slide slide level1"><h1>Rust/Wasm and Yew (and you too)</h1></section><section id="web-specific" class="slide level2">
+<h2>Web-Specific</h2>
+<aside class="notes">
+<p>not covering node-sys here though it exists</p>
+</aside>
+</section><section id="about-me" class="slide level2">
+<h2>About Me</h2>
+<ul>
+<li><p>Full Stack Developer</p>
+<ul>
+<li>https://freshconsulting.com</li>
+</ul></li>
+<li><p>Twitch Streaming:</p>
+<ul>
+<li>https://twitch.tv/cmgriffing</li>
+</ul></li>
+<li><p>Awesome Hoodie Collection</p></li>
+<li><p>Former Snowboard Bum</p></li>
+</ul>
+</section><section id="what-is-a-yew-developers-favorite-song" class="slide level2">
+<h2>What is a Yew developer’s favorite song?</h2>
+</section><section id="its-not-un-yew-sual" class="slide level2">
+<h2>Its not Un-Yew-sual</h2>
+<p><img data-src="./assets/tomjones1.jpg" /></p>
+</section></section>
+<section><section id="introducing-yew" class="title-slide slide level1"><h1>Introducing Yew</h1></section><section id="what-is-yew" class="slide level2">
+<h2>What is Yew?</h2>
+<blockquote>
+<p>Yew is a modern Rust framework for creating multi-threaded front-end web apps with WebAssembly.</p>
+</blockquote>
+</section><section id="project-stats" class="slide level2">
+<h2>Project Stats</h2>
+<ul>
+<li>Started: December 2017</li>
+</ul>
+<p><img data-src="./assets/yew-pulse-2.png" /></p>
+</section></section>
+<section><section id="wasm-wat" class="title-slide slide level1"><h1>Wasm? Wat?</h1></section><section id="in-its-own-words" class="slide level2">
+<h2>In its own words</h2>
+<ul>
+<li><p>a binary instruction format for a stack-based virtual machine</p></li>
+<li><p>a portable compilation target for programming languages</p></li>
+</ul>
+</section><section id="other-wasm-capable-languages" class="slide level2">
+<h2>Other Wasm-capable Languages</h2>
+<p><a href="https://github.com/appcypher/awesome-wasm-langs">https://github.com/appcypher/awesome-wasm-langs</a></p>
+<ul>
+<li><p>UI:</p>
+<ul>
+<li>Blazor (C#)</li>
+</ul></li>
+<li><p>Generic:</p>
+<ul>
+<li>NWSTK (C++)</li>
+<li>Cheerp (C)</li>
+<li>TinyGo</li>
+<li>and many more</li>
+</ul></li>
+</ul>
+</section><section id="my-favorite-video-about-wasm" class="slide level2">
+<h2>My Favorite Video about Wasm</h2>
+<ul>
+<li><a href="https://www.destroyallsoftware.com/talks/the-birth-and-death-of-javascript">Birth and Death of Javascript</a></li>
+</ul>
+<p><img data-src="./assets/birth-and-death-of-js.png" /></p>
+<aside class="notes">
+<p>Made in 2014</p>
+<p>Implementation details may have changed</p>
+<p>Best explanation of where things could go</p>
+</aside>
+</section></section>
+<section><section id="getting-started" class="title-slide slide level1"><h1>Getting Started</h1></section><section id="project-setup-manually" class="slide level2">
+<h2>Project Setup: Manually</h2>
+<ul>
+<li><p>Make sure you have Rust and Cargo</p>
+<ul>
+<li>rustup is recommended</li>
+</ul></li>
+<li><p>Get some tooling</p>
+<ul>
+<li>wasm-pack (recommended)</li>
+<li>wasm-bindgen (not recommended)</li>
+<li>cargo-web (older)</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>pack and bindgen are both by the Rust/Wasm Working Group (read: official)</p>
+<p>wasm-bindgen is used inside wasm-pack</p>
+</aside>
+</section><section id="starter-templates" class="slide level2">
+<h2>Starter Templates</h2>
+<section id="official" class="level3">
+<h3>Official</h3>
+<ul>
+<li><p><a href="https://github.com/yewstack/yew-wasm-pack-minimal">Minimal Template</a>: wasm-pack and rollup</p></li>
+<li><p><a href="https://github.com/yewstack/yew-wasm-pack-template">Webpack Template</a>: wasm-pack and webpack</p></li>
+</ul>
+</section>
+<section id="unofficial" class="level3">
+<h3>Unofficial</h3>
+<ul>
+<li><a href="https://github.com/spielrs/yew-parcel-template">Parcel Template</a></li>
+</ul>
+<aside class="notes">
+<p>Webpack Template is great. Already has optimizations we will see later.</p>
+</aside>
+</section>
+</section><section id="examples" class="slide level2">
+<h2>Examples</h2>
+<p><a href="https://github.com/yewstack/yew/tree/master/examples">https://github.com/yewstack/yew/tree/master/examples</a></p>
+<p>Best places to start:</p>
+<ul>
+<li>todomvc</li>
+<li>custom_components</li>
+<li>dashboard</li>
+</ul>
+</section><section id="what-is-a-yew-developers-favorite-musical-instrument" class="slide level2">
+<h2>What is a Yew developer’s favorite musical instrument?</h2>
+</section><section id="a-yew-kulele" class="slide level2">
+<h2>A Yew-kulele</h2>
+<p><img data-src="./assets/ukulele.jpg" /></p>
+</section></section>
+<section><section id="features-html" class="title-slide slide level1"><h1>Features: html!</h1></section><section id="html" class="slide level2">
+<h2>html!</h2>
+<ul class="inline-list">
+<li>
+• A jsx-like syntax
+</li>
+<li>
+• HTML and SVG
+</li>
+</ul>
+<p>Beware! Recursion Limit Error Prone</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="at">#![</span>recursion_limit<span class="at">=</span><span class="st">&quot;1024&quot;</span><span class="at">]</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    &lt;div&gt;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        &lt;button onclick=<span class="kw">self</span>.link.callback(|_| <span class="pp">Msg::</span>AddOne)&gt;<span class="op">{</span> <span class="st">&quot;+1&quot;</span> <span class="op">}</span>&lt;/button&gt;</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        &lt;p&gt;<span class="op">{</span> <span class="kw">self</span>.value <span class="op">}</span>&lt;/p&gt;</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        &lt;ul class=<span class="st">&quot;item-list&quot;</span>&gt;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>            <span class="op">{</span> <span class="kw">self</span>.props.items.iter().map(renderItem).<span class="pp">collect::</span>&lt;Html&gt;() <span class="op">}</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>        &lt;/ul&gt;</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    &lt;/div&gt;</span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="op">}</span></span></code></pre></div>
+</section><section id="html-fragments" class="slide level2">
+<h2>html!: Fragments</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>    &lt;&gt;</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        &lt;div&gt;&lt;/div&gt;</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        &lt;p&gt;&lt;/p&gt;</span>
+<span id="cb2-5"><a href="#cb2-5"></a>    &lt;/&gt;</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>Looks familiar to most React or Vue devs in JS world</p>
+</aside>
+</section><section id="html-iterators" class="slide level2">
+<h2>html!: Iterators</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    &lt;ul class=<span class="st">&quot;item-list&quot;</span>&gt;</span>
+<span id="cb3-3"><a href="#cb3-3"></a>        <span class="op">{</span> <span class="kw">self</span>.props.items.iter().map(renderItem).<span class="pp">collect::</span>&lt;Html&gt;() <span class="op">}</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    &lt;/ul&gt;</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    &lt;ul class=<span class="st">&quot;item-list&quot;</span>&gt;</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="op">{</span> <span class="kw">for</span> <span class="kw">self</span>.props.items.iter().map(renderItem) <span class="op">}</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    &lt;/ul&gt;</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>renderItem is a function that returns another html! block</p>
+</aside>
+</section><section id="html-css-classes" class="slide level2">
+<h2>html!: CSS Classes</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  &lt;div class=<span class="st">&quot;container&quot;</span>&gt;&lt;/div&gt;</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  &lt;div class=<span class="st">&quot;container center-align&quot;</span>&gt;&lt;/div&gt;</span>
+<span id="cb5-4"><a href="#cb5-4"></a>  &lt;div class=<span class="pp">format!</span>(<span class="st">&quot;{}-container&quot;</span>, size)&gt;&lt;/div&gt;</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  &lt;div class=(<span class="st">&quot;class-1&quot;</span>, <span class="st">&quot;class-2&quot;</span>)&gt;&lt;/div&gt;</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  &lt;div class=<span class="pp">vec!</span><span class="op">[</span><span class="st">&quot;class-1&quot;</span>, <span class="st">&quot;class-2&quot;</span><span class="op">]</span>&gt;&lt;/div&gt;</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  &lt;div class=<span class="kw">self</span>.classes()&gt;&lt;/div&gt;</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="op">}</span></span></code></pre></div>
+</section><section id="html-literals" class="slide level2">
+<h2>html!: Literals</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">let</span> text = <span class="st">&quot;lorem ipsum&quot;</span>;</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="pp">html!</span><span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    &lt;&gt;</span>
+<span id="cb6-4"><a href="#cb6-4"></a>        &lt;div&gt;<span class="op">{</span>text<span class="op">}</span>&lt;/div&gt;</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        &lt;div&gt;<span class="op">{</span><span class="st">&quot;dolor sit&quot;</span><span class="op">}</span>&lt;/div&gt;</span>
+<span id="cb6-6"><a href="#cb6-6"></a>        &lt;span&gt;<span class="op">{</span><span class="dv">42</span><span class="op">}</span>&lt;/span&gt;</span>
+<span id="cb6-7"><a href="#cb6-7"></a>    &lt;/&gt;</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>No bare text. It is considered an expression.</p>
+<p>Wrap literals with {}</p>
+</aside>
+</section><section id="html-expressions" class="slide level2">
+<h2>html!: Expressions</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  &lt;div&gt;</span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>      <span class="kw">if</span> show_link <span class="op">{</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>        <span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>          &lt;a href=<span class="st">&quot;https://example.com&quot;</span>&gt;<span class="op">{</span><span class="st">&quot;Link&quot;</span><span class="op">}</span>&lt;/a&gt;</span>
+<span id="cb7-7"><a href="#cb7-7"></a>        <span class="op">}</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>      <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>        <span class="pp">html!</span> <span class="op">{}</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a>      <span class="op">}</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="op">}</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a>  &lt;/div&gt;</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>Often cleaner to extract to function</p>
+<p>must have else and else must return html!</p>
+</aside>
+</section></section>
+<section><section id="features-components" class="title-slide slide level1"><h1>Features: Components</h1></section><section id="components-lifecycle" class="slide level2">
+<h2>Components: Lifecycle</h2>
+<p><img class="no-border" src="./assets/components-v4.png" /></p>
+</section><section id="components-props-example" class="slide level2">
+<h2>Components: Props Example</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">pub</span> <span class="kw">struct</span> Container(Props);</span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="at">#[</span>derive<span class="at">(</span>Properties<span class="at">,</span> <span class="bu">Clone</span><span class="at">)]</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="kw">pub</span> <span class="kw">struct</span> Props <span class="op">{</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>    <span class="kw">pub</span> children: Children,</span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="at">#[</span>props_or_default<span class="at">]</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a>    <span class="kw">pub</span> some_string,</span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="at">#[</span>props_or_<span class="at">(</span><span class="cn">true</span><span class="at">)]</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="kw">pub</span> some_boolean,</span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="op">}</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="kw">impl</span> Component <span class="kw">for</span> Container <span class="op">{</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a>    <span class="kw">type</span> Properties = Props;</span>
+<span id="cb8-16"><a href="#cb8-16"></a></span>
+<span id="cb8-17"><a href="#cb8-17"></a>    <span class="kw">fn</span> view(&amp;<span class="kw">self</span>) -&gt; Html <span class="op">{</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>       <span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a>           &lt;div id=<span class="st">&quot;container&quot;</span>&gt;</span>
+<span id="cb8-20"><a href="#cb8-20"></a>               <span class="op">{</span> <span class="kw">self</span>.<span class="dv">0</span>.children.render() <span class="op">}</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a>           &lt;/div&gt;</span>
+<span id="cb8-22"><a href="#cb8-22"></a>       <span class="op">}</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a>    <span class="op">}</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>Things to call out:</p>
+<ul>
+<li>derive properties (do not implement manually)</li>
+<li>Props and default values</li>
+<li>children</li>
+</ul>
+</aside>
+</section><section id="components-event-example" class="slide level2">
+<h2>Components: Event Example</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">pub</span> <span class="kw">struct</span> Container<span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>    props: Props,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    link: ComponentLink&lt;<span class="kw">Self</span>&gt;,</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="op">}</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="at">#[</span>derive<span class="at">(</span>Properties<span class="at">,</span> <span class="bu">Clone</span><span class="at">)]</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="kw">pub</span> <span class="kw">struct</span> Props <span class="op">{</span> <span class="op">}</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="at">#[</span>derive<span class="at">(</span><span class="bu">Clone</span><span class="at">,</span> <span class="bu">PartialEq</span><span class="at">)]</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="kw">pub</span> <span class="kw">enum</span> Msg <span class="op">{</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>    Reset,</span>
+<span id="cb9-12"><a href="#cb9-12"></a>    HandleClick,</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    HandleInput(event)</span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="op">}</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="kw">impl</span> Component <span class="kw">for</span> Container <span class="op">{</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="kw">type</span> Properties = Props;</span>
+<span id="cb9-18"><a href="#cb9-18"></a></span>
+<span id="cb9-19"><a href="#cb9-19"></a>    <span class="kw">fn</span> create(props: <span class="kw">Self</span>::Properties, link: ComponentLink&lt;<span class="kw">Self</span>&gt;) -&gt; <span class="kw">Self</span> <span class="op">{</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>        <span class="kw">Self</span> <span class="op">{</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>            props,</span>
+<span id="cb9-22"><a href="#cb9-22"></a>            link,</span>
+<span id="cb9-23"><a href="#cb9-23"></a>        <span class="op">}</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a>    <span class="op">}</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a>    <span class="kw">fn</span> update(&amp;<span class="kw">mut</span> <span class="kw">self</span>, msg: <span class="kw">Self</span>::Message) -&gt; ShouldRender <span class="op">{</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a>        <span class="kw">match</span> msg <span class="op">{</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a>            <span class="pp">Msg::</span>HandleClick =&gt; <span class="op">{</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a>                <span class="pp">info!</span>(<span class="st">&quot;HANDLING CLICK&quot;</span>);</span>
+<span id="cb9-30"><a href="#cb9-30"></a>            <span class="op">}</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a>            <span class="pp">Msg::</span>HandleInput(input_value) =&gt; <span class="op">{</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a>                <span class="pp">info!</span>(<span class="st">&quot;HANDLING INPUT {:?}&quot;</span>, input_value);</span>
+<span id="cb9-33"><a href="#cb9-33"></a>            <span class="op">}</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a>        <span class="op">}</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a></span>
+<span id="cb9-36"><a href="#cb9-36"></a>        <span class="cn">true</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a>    <span class="op">}</span></span>
+<span id="cb9-38"><a href="#cb9-38"></a></span>
+<span id="cb9-39"><a href="#cb9-39"></a>    <span class="kw">fn</span> view(&amp;<span class="kw">self</span>) -&gt; Html <span class="op">{</span></span>
+<span id="cb9-40"><a href="#cb9-40"></a>        <span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a>            &lt;div id=<span class="st">&quot;container&quot;</span>&gt;</span>
+<span id="cb9-42"><a href="#cb9-42"></a>                &lt;input</span>
+<span id="cb9-43"><a href="#cb9-43"></a>                  oninput=<span class="kw">self</span>.link.callback(|event: InputData| <span class="pp">Msg::</span>handleInput(event.value))</span>
+<span id="cb9-44"><a href="#cb9-44"></a>                /&gt;</span>
+<span id="cb9-45"><a href="#cb9-45"></a>                &lt;button</span>
+<span id="cb9-46"><a href="#cb9-46"></a>                  onclick=<span class="kw">self</span>.link.callback(|_| <span class="pp">Msg::</span>handleClick)</span>
+<span id="cb9-47"><a href="#cb9-47"></a>                &gt;<span class="op">{</span><span class="st">&quot;Click Me&quot;</span><span class="op">}</span>&lt;/button&gt;</span>
+<span id="cb9-48"><a href="#cb9-48"></a>            &lt;/div&gt;</span>
+<span id="cb9-49"><a href="#cb9-49"></a>        <span class="op">}</span></span>
+<span id="cb9-50"><a href="#cb9-50"></a>    <span class="op">}</span></span>
+<span id="cb9-51"><a href="#cb9-51"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+
+</aside>
+</section><section id="components-refs" class="slide level2">
+<h2>Components: Refs</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">// In create</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">self</span>.node_ref = <span class="pp">NodeRef::</span><span class="kw">default</span>();</span>
+<span id="cb10-3"><a href="#cb10-3"></a>​</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="co">// In view</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="pp">html!</span> <span class="op">{</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>    &lt;div <span class="kw">ref</span>=<span class="kw">self</span>.node_ref.clone()&gt;&lt;/div&gt;</span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="op">}</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>​</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co">// In update</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a><span class="kw">let</span> has_attributes = <span class="kw">self</span>.node_ref.<span class="pp">try_into::</span>&lt;Element&gt;().has_attributes();</span></code></pre></div>
+</section></section>
+<section><section id="features-agents" class="title-slide slide level1"><h1>Features: Agents</h1></section><section id="agents" class="slide level2">
+<h2>Agents</h2>
+<p>Similar to Angular Services</p>
+<p>Uses web-workers for concurrency</p>
+<p>Useful for:</p>
+<ul>
+<li>pass messages to any other component</li>
+<li>share state</li>
+<li>offload heavy computation to worker thread</li>
+</ul>
+<aside class="notes">
+<p>Plans for cross-tab communication</p>
+</aside>
+</section><section id="agents-lifecycle" class="slide level2">
+<h2>Agents: Lifecycle</h2>
+<p><img class="no-border" src="./assets/agentsv4.png" /></p>
+</section><section id="agents-types" class="slide level2">
+<h2>Agents: Types</h2>
+<ul>
+<li>Context (UI Thread Singleton)</li>
+<li>Job (UI Thread)</li>
+<li>Public (New Thread Singleton)</li>
+<li>Private (New Thread)</li>
+</ul>
+<aside class="notes">
+<p>Singleton = creates new if none. Otherwise uses existing</p>
+<p>Non Singleton = New Agent per connection/bridge</p>
+</aside>
+</section><section id="agents-bridges-and-dispatchers" class="slide level2">
+<h2>Agents: Bridges and Dispatchers</h2>
+<ul>
+<li><p>Bridge: bi-directional communication</p>
+<ul>
+<li>(component &lt;-&gt; agent and agent &lt;-&gt; agent)</li>
+</ul></li>
+<li><p>Dispatcher: unidirectional</p>
+<ul>
+<li>sends from component to Agent</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<p>Seperate threaded agents have serialization overhead</p>
+</aside>
+</section></section>
+<section><section id="services" class="title-slide slide level1"><h1>Services</h1><p>Used to abstract Browser APIs</p></section><section id="storage" class="slide level2">
+<h2>Storage</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">let</span> storage = <span class="pp">StorageService::</span>new(<span class="pp">Area::</span>Local).expect(<span class="st">&quot;storage was disabled by the user&quot;</span>);</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw">let</span> Json(database) = storage.restore(KEY);</span></code></pre></div>
+</section><section id="fetch" class="slide level2">
+<h2>Fetch</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">fn</span> fetch_json(&amp;<span class="kw">mut</span> <span class="kw">self</span>, binary: AsBinary) -&gt; <span class="pp">yew::services::fetch::</span>FetchTask <span class="op">{</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>        <span class="kw">let</span> callback = <span class="kw">self</span>.link.callback(</span>
+<span id="cb12-3"><a href="#cb12-3"></a>            <span class="kw">move</span> |response: Response&lt;Json&lt;<span class="dt">Result</span>&lt;DataFromFile, Error&gt;&gt;&gt;| <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>                <span class="co">// Handle response</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>            <span class="op">}</span>,</span>
+<span id="cb12-6"><a href="#cb12-6"></a>        );</span>
+<span id="cb12-7"><a href="#cb12-7"></a>        <span class="kw">let</span> request = <span class="pp">Request::</span>get(<span class="st">&quot;/data.json&quot;</span>).body(Nothing).unwrap();</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a>        <span class="pp">FetchService::</span>fetch(request, callback).unwrap()</span>
+<span id="cb12-10"><a href="#cb12-10"></a>        <span class="op">}</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a>    <span class="op">}</span></span></code></pre></div>
+</section><section id="render-requestanimationframe" class="slide level2">
+<h2>Render (requestAnimationFrame)</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">let</span> render_frame = <span class="kw">self</span>.link.callback(<span class="pp">Msg::</span>Render);</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="kw">let</span> handle = <span class="pp">RenderService::</span>request_animation_frame(render_frame);</span></code></pre></div>
+</section><section id="intervaltimeout" class="slide level2">
+<h2>Interval/Timeout</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb14-1"><a href="#cb14-1"></a><span class="pp">TimeoutService::</span>spawn(<span class="pp">Duration::</span>from_secs(<span class="dv">3</span>), <span class="kw">self</span>.callback_done.clone());</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb15-1"><a href="#cb15-1"></a><span class="pp">IntervalService::</span>spawn(<span class="pp">Duration::</span>from_secs(<span class="dv">1</span>), <span class="kw">self</span>.callback_tick.clone());</span></code></pre></div>
+</section><section id="and-more" class="slide level2">
+<h2>And More</h2>
+<ul>
+<li>Keyboard</li>
+<li>Resize</li>
+<li>WebSocket</li>
+<li>Dialog</li>
+<li>Console</li>
+</ul>
+<aside class="notes">
+<p>Didnt see Scroll</p>
+</aside>
+</section><section id="where-do-devs-go-to-learn-about-yew" class="slide level2">
+<h2>Where do devs go to learn about Yew?</h2>
+</section><section id="a-yew-niversity" class="slide level2">
+<h2>A Yew-niversity</h2>
+<p><img data-src="./assets/graduation.jpeg" /></p>
+</section></section>
+<section id="demo" class="title-slide slide level1"><h1>Demo!!</h1><aside class="notes">
+<p>Show app itself</p>
+<p>Show slow running example</p>
+<p>Show production version</p>
+<p>Explain whats in it</p>
+</aside></section>
+<section><section id="internals" class="title-slide slide level1"><h1>Internals</h1></section><section id="web-sys-or-stdweb" class="slide level2">
+<h2>web-sys OR stdweb</h2>
+<ul>
+<li><p>web-sys &lt;-&gt; wasm-bindgen</p></li>
+<li><p>stdweb &lt;-&gt; cargo-web</p></li>
+</ul>
+</section><section id="debugging-panics" class="slide level2">
+<h2>Debugging: Panics</h2>
+<p><code>console_error_panic</code>: nicer stacktraces</p>
+<ul>
+<li><strong>not</strong> compatible with <strong>cargo-web</strong></li>
+</ul>
+</section><section id="debugging-console.log" class="slide level2">
+<h2>Debugging: console.log</h2>
+<p><code>log</code>: rust standard crate just works</p>
+<p><code>ConsoleService</code>: Yew wrapper service</p>
+</section><section id="yewtil" class="slide level2">
+<h2>Yewtil</h2>
+<ul>
+<li><p>NeqAssign: shallow prop checks</p></li>
+<li><p>PureComponent: uses NeqAssign (memoized based on props)</p></li>
+<li><p>Lrc: linked list reference counted smart pointer</p></li>
+<li><p>Mrc/Irc: Mutable/Immutable reference counted smart pointers</p></li>
+<li><p>History: A history tracking wrapper that uses a <code>VecDeque</code></p></li>
+</ul>
+</section><section id="undocumented" class="slide level2">
+<h2>Undocumented</h2>
+<ul>
+<li><p>Component lifecycle state machine</p></li>
+<li><p>VDOM diff algorithm</p></li>
+</ul>
+</section></section>
+<section><section id="optimizing" class="title-slide slide level1"><h1>Optimizing</h1></section><section id="optimizing-runtime" class="slide level2">
+<h2>Optimizing Runtime</h2>
+<ul>
+<li>neq_assign</li>
+<li>RC</li>
+<li>(non-native) Pure Components</li>
+<li>(missing) Function Components (coming soon?)</li>
+</ul>
+</section><section id="optimizing-build-size" class="slide level2">
+<h2>Optimizing Build Size</h2>
+<ul>
+<li>wee-alloc</li>
+<li>release compile profile</li>
+<li>wasm-opt: Loads WebAssembly and runs Binaryen IR passes on it.</li>
+</ul>
+<aside class="notes">
+<p>My starter did all this for me</p>
+</aside>
+</section><section id="optimizing-build-wee-alloc" class="slide level2">
+<h2>Optimizing Build: wee-alloc</h2>
+<p><code>wee_alloc</code>: The <b>W</b>asm-<b>E</b>nabled, <b>E</b>lfin Allocator.</p>
+<ul>
+<li><p><strong>Elfin, i.e. small</strong>:</p>
+<ul>
+<li>less than a kilobyte of uncompressed WebAssembly code.</li>
+<li>Doesn’t pull in the heavy panicking or formatting infrastructure.</li>
+</ul></li>
+<li><p><strong>WebAssembly enabled</strong>: Designed for the wasm32-unknown-unknown target and #[no_std].</p></li>
+</ul>
+</section><section id="optimizing-compilation-time" class="slide level2">
+<h2>Optimizing Compilation Time</h2>
+<p>Cargo Workspaces</p>
+<ul>
+<li><p>make your <strong>main</strong> crate handle routing/page selection</p></li>
+<li><p>move all <strong>commonly shared</strong> code to another crate</p></li>
+<li><p>make a different crate for <strong>each page</strong></p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li><p>compile time based on html! content</p></li>
+<li><p>break apart your code across multiple crates</p>
+<ul>
+<li>each page could be a different component</li>
+<li>just a big function that produces Html</li>
+</ul></li>
+<li><p>best case: rebuilding only the main crate, and one of your page crates</p></li>
+<li><p>worst case: edit something in the “common” crate compiling all code that depends on that</p></li>
+</ul>
+</aside>
+</section><section id="what-does-batman-use-to-climb-a-tree" class="slide level2">
+<h2>What does batman use to climb a tree?</h2>
+</section><section id="his-yew-tility-belt" class="slide level2">
+<h2>His Yew-tility belt</h2>
+<p><img data-src="./assets/batman.gif" /></p>
+</section></section>
+<section><section id="notes" class="title-slide slide level1"><h1>Notes</h1></section><section id="docs-need-some-work" class="slide level2">
+<h2>Docs need some work</h2>
+<p><img data-src="./assets/todo.png" /></p>
+</section><section id="direct-css-support" class="slide level2">
+<h2>Direct CSS Support</h2>
+<p><a href="https://github.com/yewstack/yew/issues/533">https://github.com/yewstack/yew/issues/533</a></p>
+<ul>
+<li><p>yew_css (inline declarations)</p>
+<ul>
+<li><a href="https://github.com/hgzimmerman/yew_css">https://github.com/hgzimmerman/yew_css</a></li>
+</ul></li>
+<li><p>css-in-rust (inspired by sass and styled components)</p>
+<ul>
+<li><a href="https://github.com/lukidoescode/css-in-rust">https://github.com/lukidoescode/css-in-rust</a></li>
+</ul></li>
+<li><p>css-modules</p>
+<ul>
+<li><a href="https://crates.io/crates/css-modules">https://crates.io/crates/css-modules</a></li>
+</ul></li>
+</ul>
+</section><section id="testing" class="slide level2">
+<h2>Testing</h2>
+<p>wasm-bindgen-test</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">use</span> <span class="pp">wasm_bindgen_test::</span>*;</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="at">#[</span>wasm_bindgen_test<span class="at">]</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">fn</span> pass() <span class="op">{</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a>    <span class="pp">assert_eq!</span>(<span class="dv">1</span>, <span class="dv">1</span>);</span>
+<span id="cb16-6"><a href="#cb16-6"></a><span class="op">}</span></span></code></pre></div>
+<aside class="notes">
+<p>Runs in Node by default</p>
+<p>Headless chrome as an option</p>
+<p>must be in the root of the crate, or within a pub mod</p>
+</aside>
+</section><section id="external-libs" class="slide level2">
+<h2>External Libs</h2>
+<ul>
+<li><p>Needed (according to docs site)</p>
+<ul>
+<li>Bootstrap/MaterialUi/arbitrary css framework component wrappers</li>
+</ul></li>
+<li><p>Yewtify seems promising</p></li>
+</ul>
+<aside class="notes">
+<p>One I used was Yewtify, inspired by Vuetify. Needs more work though.</p>
+</aside>
+</section></section>
+<section><section id="wrapping-up" class="title-slide slide level1"><h1>Wrapping Up</h1></section><section id="other-rust-frameworks" class="slide level2">
+<h2>Other Rust Frameworks</h2>
+<p><a href="https://github.com/flosse/rust-web-framework-comparison#frontend-frameworks-wasm">https://github.com/flosse/rust-web-framework-comparison#frontend-frameworks-wasm</a></p>
+<p>Notables</p>
+<ul>
+<li>Seed</li>
+<li>Percy</li>
+<li>Draco</li>
+<li>Smithy</li>
+</ul>
+<aside class="notes">
+<p>Seed seems to be popular but not much activity in comparison.</p>
+<p>Instead of the html! macro they have custom macros that resemble Elm syntax</p>
+<p>Seed is planning “react-like hooks”</p>
+</aside>
+</section><section id="other-rust-streamers-game-focused" class="slide level2">
+<h2>Other Rust Streamers (Game focused)</h2>
+<ul>
+<li>rhymu8354 - game dev - backend</li>
+<li>mrhalzy - game dev - rust + godot</li>
+<li>madhousesteve - game dev - wasm/browser</li>
+<li>togglebit - game dev - rust + godot</li>
+<li>ectondev - game engine dev</li>
+<li>brookzerker - game dev (gg.ez)</li>
+<li>ferrisstreamsstuff - emulator and hardware dev</li>
+<li>urouroniwa - Dwarf Fortress clone</li>
+</ul>
+</section><section id="other-rust-streamers-misc" class="slide level2">
+<h2>Other Rust Streamers (misc)</h2>
+<ul>
+<li>codeshow - en/pt - web backend</li>
+<li>provod - en/ru - digital art, demoscene</li>
+<li>museun - variety coding - no mic</li>
+<li>gamozo - low level (OS, fuzzing, etc)</li>
+<li>tsoding - variety coding</li>
+<li>jonhoo - infrequent for now</li>
+<li>steveklabnik - THE Steve Klabnik</li>
+<li>erikdotdev - backend focused</li>
+<li>rustaceans (Team) (managed by codeshow)</li>
+</ul>
+</section><section id="citations" class="slide level2">
+<h2>Citations</h2>
+<ul>
+<li>Yew documentation - <a href="https://yew.rs">https://yew.rs</a></li>
+<li>wasm-bindgen documentation - <a href="https://rustwasm.github.io/docs/wasm-bindgen/">https://rustwasm.github.io/docs/wasm-bindgen/</a></li>
+</ul>
+</section><section id="goodbye-reactangularetc" class="slide level2">
+<h2>Goodbye React/Angular/etc?</h2>
+</section><section id="never-gonna-give-yew-up" class="slide level2">
+<h2>Never gonna give Yew up</h2>
+<p><img data-src="./assets/rick_astley.jpg" /></p>
+</section></section>
+<section id="thank-you" class="title-slide slide level1"><h1>Thank you</h1><style>
+/* Global Styles go here */
+
+.reveal blockquote, pre, code {
+  background: #FFF;
+}
+
+.no-border {
+  border: none !important;
+  box-shadow: none !important;
+}
+.reveal section img {
+  max-height: 42vh
+}
+
+.inline-list li {
+  display: inline;
+}
+
+</style></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
